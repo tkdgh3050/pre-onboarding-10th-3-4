@@ -1,6 +1,7 @@
-import TodoItem from "./TodoItem";
+import React from 'react';
+import TodoItem from './TodoItem';
 
-const TodoList = ({ todos, setTodos }) => {
+function TodoList({ todos, setTodos }) {
   return todos.length ? (
     <ul>
       {todos.map(({ id, title }) => (
@@ -10,5 +11,5 @@ const TodoList = ({ todos, setTodos }) => {
   ) : (
     <div className="empty-list">...</div>
   );
-};
+}
 export default TodoList;

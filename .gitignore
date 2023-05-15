@@ -1,3 +1,7 @@
-node_modules
+/node_modules
 .env
 README.md
+/build
+.DS_Store
+.eslintcache
+npm-debug.log*
