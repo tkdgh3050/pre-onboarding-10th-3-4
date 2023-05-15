@@ -25,3 +25,8 @@ export interface RecommendProviderProps {
   recommendService: RecommendServiceReturn;
 }
 export type RecommendServiceReturn = ReturnType<typeof RecommendService>;
+
+export interface DropdownItemProps {
+  title: string;
+  query: string;
+}

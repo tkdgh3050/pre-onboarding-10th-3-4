@@ -2,8 +2,10 @@ import { RecommendData, RecommendHandlerValue, RecommendStateValue } from '@type
 import { RecommendProviderProps, SearchProps } from '@type/props';
 import React, { createContext, useContext, useState, useMemo } from 'react';
 
+const defaultResponse = { q: '', page: 0, limit: 0, result: [], qty: 0, total: 0 };
 const defaultRecommendContextState: RecommendStateValue = {
-  recommendListData: [{ q: '', page: 0, limit: 0, result: [], qty: 0, total: 0 }],
+  recommendResponse: defaultResponse,
+  recommendListData: [''],
 };
 
 const defaultRecommendContextHandler: RecommendHandlerValue = {
@@ -19,21 +21,24 @@ export const useRecommendState = () => useContext(RecommendContextState);
 export const useRecommendHandler = () => useContext(RecommendContextHandler);
 
 export function RecommendProvider({ children, recommendService }: RecommendProviderProps) {
-  const [recommendListData, setRecommendListData] = useState<RecommendData[]>([]);
+  const [recommendResponse, setRecommendResponse] = useState<RecommendData>(defaultResponse);
+  const [recommendListData, setRecommendListData] = useState<string[]>([]);
 
   const getRecommendData = async (searchParam: SearchProps) => {
     console.log('getRecommendData param: ', searchParam);
     if (searchParam.q === '') return;
     const { data } = await recommendService.getSearch(searchParam);
     console.log('getRecommendData data: ', data);
-    setRecommendListData(data);
+    setRecommendResponse(data);
+    setRecommendListData(data.result);
   };
 
   const stateValue = useMemo(
     () => ({
+      recommendResponse,
       recommendListData,
     }),
-    [recommendListData]
+    [recommendResponse, recommendListData]
   );
 
   const handlerValue = useMemo(

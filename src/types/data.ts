@@ -27,7 +27,8 @@ export interface RecommendData {
 }
 
 export interface RecommendStateValue {
-  recommendListData: RecommendData[];
+  recommendResponse: RecommendData;
+  recommendListData: string[];
 }
 
 export interface RecommendHandlerValue {
