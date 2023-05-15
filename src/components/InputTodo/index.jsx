@@ -40,6 +40,10 @@ function InputTodo({ setTodos }) {
     [inputText, setTodos]
   );
 
+  const onChangeInput = e => {
+    setInputText(e.target.value);
+  };
+
   return (
     <form className="form-container" onSubmit={handleSubmit}>
       <input
@@ -47,7 +51,7 @@ function InputTodo({ setTodos }) {
         placeholder="Add new todo..."
         ref={ref}
         value={inputText}
-        onChange={e => setInputText(e.target.value)}
+        onChange={onChangeInput}
         disabled={isLoading}
       />
       {!isLoading ? (
