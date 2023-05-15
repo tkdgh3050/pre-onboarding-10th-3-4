@@ -1,4 +1,4 @@
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import React, { useCallback, useEffect, useState } from 'react';
 import useFocus from '@hooks/useFocus';
 import { ERROR_ALERT_MESSAGE } from '@utils/constants';
@@ -45,6 +45,7 @@ function InputTodo() {
 
   return (
     <form className="form-container" onSubmit={handleSubmit}>
+      <FaSearch className="icon-search" />
       <input
         className="input-text"
         placeholder="Add new todo..."
@@ -55,7 +56,7 @@ function InputTodo() {
       />
       {!isLoading ? (
         <button className="input-submit" type="submit">
-          <FaPlusCircle className="btn-plus" />
+          {/* <FaPlusCircle className="btn-plus" /> */}
         </button>
       ) : (
         Spinner
