@@ -1,11 +1,14 @@
 import React from 'react';
+import { useTodoState } from '@context/TodoContext';
 import TodoItem from './TodoItem';
 
-function TodoList({ todos, setTodos }) {
-  return todos.length ? (
+function TodoList() {
+  const { todoListData } = useTodoState();
+
+  return todoListData.length ? (
     <ul>
-      {todos.map(({ id, title }) => (
-        <TodoItem key={id} id={id} title={title} setTodos={setTodos} />
+      {todoListData.map(({ id, title }) => (
+        <TodoItem key={id} id={id} title={title} />
       ))}
     </ul>
   ) : (

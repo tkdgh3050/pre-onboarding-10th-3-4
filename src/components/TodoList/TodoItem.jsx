@@ -1,24 +1,24 @@
 import { FaTrash } from 'react-icons/fa';
 import React, { useCallback } from 'react';
-import { deleteTodo } from '@api/todo';
 import { ERROR_ALERT_MESSAGE } from '@utils/constants';
 import useLoading from '@hooks/useLoading';
+import { useTodoHandler } from '@context/TodoContext';
 
-function TodoItem({ id, title, setTodos }) {
+function TodoItem({ id, title }) {
   const { isLoading, startLoading, endLoading, Spinner } = useLoading();
+  const { removeTodoData } = useTodoHandler();
 
   const handleRemoveTodo = useCallback(async () => {
     try {
       startLoading();
-      await deleteTodo(id);
+      await removeTodoData(id);
       endLoading();
-      setTodos(prev => prev.filter(item => item.id !== id));
     } catch (error) {
       console.error(error);
       endLoading();
       alert(ERROR_ALERT_MESSAGE);
     }
-  }, [id, setTodos]);
+  }, [id]);
 
   return (
     <li className="item">

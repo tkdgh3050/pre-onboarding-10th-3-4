@@ -23,7 +23,9 @@
       "@hooks/*": ["src/hooks/*"],
       "@hoc/*": ["src/hoc/*"],
       "@type/*": ["src/types/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@context/*": ["src/context/*"],
+      "@service/*": ["src/service/*"]
     }
   },
   "include": ["src", "tsconfig.paths.json", "commitlint.config.js", "craco.config.ts"]

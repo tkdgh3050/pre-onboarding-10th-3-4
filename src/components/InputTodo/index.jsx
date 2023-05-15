@@ -1,14 +1,15 @@
 import { FaPlusCircle } from 'react-icons/fa';
 import React, { useCallback, useEffect, useState } from 'react';
-import { createTodo } from '@api/todo';
 import useFocus from '@hooks/useFocus';
 import { ERROR_ALERT_MESSAGE } from '@utils/constants';
 import useLoading from '@hooks/useLoading';
+import { useTodoHandler } from '@context/TodoContext';
 
-function InputTodo({ setTodos }) {
+function InputTodo() {
   const [inputText, setInputText] = useState('');
   const { isLoading, startLoading, endLoading, Spinner } = useLoading();
   const { ref, setFocus } = useFocus();
+  const { createTodoData } = useTodoHandler();
 
   useEffect(() => {
     setFocus();
@@ -26,10 +27,7 @@ function InputTodo({ setTodos }) {
         }
 
         const newItem = { title: trimmed };
-        const { data } = await createTodo(newItem);
-        if (data) {
-          return setTodos(prev => [...prev, data]);
-        }
+        await createTodoData(newItem);
       } catch (error) {
         console.error(error);
         alert(ERROR_ALERT_MESSAGE);
@@ -38,7 +36,7 @@ function InputTodo({ setTodos }) {
         endLoading();
       }
     },
-    [inputText, setTodos]
+    [inputText]
   );
 
   const onChangeInput = e => {
