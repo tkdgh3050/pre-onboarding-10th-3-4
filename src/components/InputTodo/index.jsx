@@ -2,6 +2,7 @@ import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
 import React, { useCallback, useEffect, useState } from 'react';
 import { createTodo } from '@api/todo';
 import useFocus from '@hooks/useFocus';
+import { ERROR_ALERT_MESSAGE } from '@utils/constants';
 
 function InputTodo({ setTodos }) {
   const [inputText, setInputText] = useState('');
@@ -30,7 +31,7 @@ function InputTodo({ setTodos }) {
         }
       } catch (error) {
         console.error(error);
-        alert('Something went wrong.');
+        alert(ERROR_ALERT_MESSAGE);
       } finally {
         setInputText('');
         setIsLoading(false);
