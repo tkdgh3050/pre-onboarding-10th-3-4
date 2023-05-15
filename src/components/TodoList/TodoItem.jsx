@@ -1,22 +1,22 @@
-import { FaSpinner, FaTrash } from 'react-icons/fa';
-import React, { useCallback, useState } from 'react';
+import { FaTrash } from 'react-icons/fa';
+import React, { useCallback } from 'react';
 import { deleteTodo } from '@api/todo';
 import { ERROR_ALERT_MESSAGE } from '@utils/constants';
+import useLoading from '@hooks/useLoading';
 
 function TodoItem({ id, title, setTodos }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoading, startLoading, endLoading, Spinner } = useLoading();
 
   const handleRemoveTodo = useCallback(async () => {
     try {
-      setIsLoading(true);
+      startLoading();
       await deleteTodo(id);
-
+      endLoading();
       setTodos(prev => prev.filter(item => item.id !== id));
     } catch (error) {
       console.error(error);
+      endLoading();
       alert(ERROR_ALERT_MESSAGE);
-    } finally {
-      setIsLoading(false);
     }
   }, [id, setTodos]);
 
@@ -29,7 +29,7 @@ function TodoItem({ id, title, setTodos }) {
             <FaTrash className="btn-trash" />
           </button>
         ) : (
-          <FaSpinner className="spinner" />
+          Spinner
         )}
       </div>
     </li>

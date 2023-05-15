@@ -1,12 +1,13 @@
-import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
+import { FaPlusCircle } from 'react-icons/fa';
 import React, { useCallback, useEffect, useState } from 'react';
 import { createTodo } from '@api/todo';
 import useFocus from '@hooks/useFocus';
 import { ERROR_ALERT_MESSAGE } from '@utils/constants';
+import useLoading from '@hooks/useLoading';
 
 function InputTodo({ setTodos }) {
   const [inputText, setInputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoading, startLoading, endLoading, Spinner } = useLoading();
   const { ref, setFocus } = useFocus();
 
   useEffect(() => {
@@ -17,7 +18,7 @@ function InputTodo({ setTodos }) {
     async e => {
       try {
         e.preventDefault();
-        setIsLoading(true);
+        startLoading();
 
         const trimmed = inputText.trim();
         if (!trimmed) {
@@ -34,7 +35,7 @@ function InputTodo({ setTodos }) {
         alert(ERROR_ALERT_MESSAGE);
       } finally {
         setInputText('');
-        setIsLoading(false);
+        endLoading();
       }
     },
     [inputText, setTodos]
@@ -59,7 +60,7 @@ function InputTodo({ setTodos }) {
           <FaPlusCircle className="btn-plus" />
         </button>
       ) : (
-        <FaSpinner className="spinner" />
+        Spinner
       )}
     </form>
   );
