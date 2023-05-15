@@ -7,8 +7,7 @@ export function TodoService(apiRequest: ApiRequestReturn) {
     getTodoList: async () => {
       try {
         const response = await apiRequest.get(`${RESOURCE}`);
-        console.log(response);
-        return response.data;
+        return response;
       } catch (error) {
         throw new Error('API getTodoList error');
       }

@@ -27,7 +27,7 @@ export function TodoProvider({ children, todoService }: TodoProviderProps) {
 
   useEffect(() => {
     const getTodoList = async () => {
-      const data = await todoService.getTodoList();
+      const { data } = await todoService.getTodoList();
       setTodoListData(data);
     };
     getTodoList();
