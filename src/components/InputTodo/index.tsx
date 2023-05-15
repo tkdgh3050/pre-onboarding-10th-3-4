@@ -39,7 +39,7 @@ function InputTodo() {
     [inputText]
   );
 
-  const onChangeInput = e => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
 

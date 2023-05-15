@@ -3,15 +3,16 @@ import React, { useCallback } from 'react';
 import { ERROR_ALERT_MESSAGE } from '@utils/constants';
 import useLoading from '@hooks/useLoading';
 import { useTodoHandler } from '@context/TodoContext';
+import { TodoCreateData } from '@type/data';
 
-function TodoItem({ id, title }) {
+function TodoItem({ id, title }: TodoCreateData) {
   const { isLoading, startLoading, endLoading, Spinner } = useLoading();
   const { removeTodoData } = useTodoHandler();
 
   const handleRemoveTodo = useCallback(async () => {
     try {
       startLoading();
-      await removeTodoData(id);
+      if (id) await removeTodoData(id);
       endLoading();
     } catch (error) {
       console.error(error);
