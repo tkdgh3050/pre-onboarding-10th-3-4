@@ -30,22 +30,47 @@ body {
 }
 
 .form-container {
-  width: 100%;
-  margin-bottom: 20px;
   display: flex;
-  border-radius: calc(0.5 * 100px);
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 13px;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  height: 44px;
+}
+
+.form-container:hover {
+  border: 3px solid #dedede;
+  padding: 10px 11px;
+}
+
+.form-container:focus-within {
+  border: 1px solid #9f9f9f;
+  padding: 12px 13px;
+}
+
+.icon-search {
+  font-size: 15px;
+  color: #7d7d7d;
 }
 
 .input-text {
-  font-size: 1rem;
+  height: 20px;
   font-weight: 400;
-  width: 85%;
-  padding-right: 5px;
-  padding-left: 10px;
-  border-radius: calc(0.5 * 100px);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  color: #9f9f9f;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
   background-color: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .input-submit {
