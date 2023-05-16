@@ -1,22 +1,11 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
+
+import styles from './Header.module.css';
 
 function Header() {
-  const headerStyle = {
-    padding: '20px 0',
-    lineHeight: '1.5em',
-  };
-  const titleStyle: CSSProperties = {
-    fontSize: '6rem',
-    fontWeight: '600',
-    marginBottom: '2rem',
-    lineHeight: '1em',
-    color: '#ececec',
-    textAlign: 'center',
-  };
-
   return (
-    <header style={headerStyle}>
-      <h1 style={titleStyle}>Toodos</h1>
+    <header className={styles.header}>
+      <h1 className={styles['title-h1']}>Toodos</h1>
     </header>
   );
 }
