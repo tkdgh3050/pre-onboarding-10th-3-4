@@ -31,12 +31,14 @@ export function RecommendProvider({ children, recommendService }: RecommendProvi
   };
 
   const getRecommendData = async (searchParam: SearchProps) => {
-    // console.log('getRecommendData param: ', searchParam);
     if (searchParam.q === '') return clearRecommendData();
     const { data } = await recommendService.getSearch(searchParam);
-    // console.log('getRecommendData data: ', data);
+    if (data.page > 1) {
+      setRecommendListData(prev => [...prev, ...data.result]);
+    } else {
+      setRecommendListData(data.result);
+    }
     setRecommendResponse(data);
-    setRecommendListData(data.result);
   };
 
   const stateValue = useMemo(
