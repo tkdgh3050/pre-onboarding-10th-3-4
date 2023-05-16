@@ -81,13 +81,7 @@ function InputTodo() {
           onChange={onChangeInput}
           disabled={isLoading}
         />
-        {!isLoading ? (
-          <button className={styles['input-submit']} type="submit">
-            {/* <FaPlusCircle className="btn-plus" /> */}
-          </button>
-        ) : (
-          Spinner
-        )}
+        {!isLoading ? null : Spinner}
       </form>
       <DropdownList clickDropdownList={clickDropdownList} />
     </>
