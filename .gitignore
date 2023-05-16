@@ -1,6 +1,5 @@
 /node_modules
 .env
-README.md
 /build
 .DS_Store
 .eslintcache
