@@ -6,7 +6,7 @@ function TodoList() {
   const { todoListData } = useTodoState();
 
   return todoListData.length ? (
-    <ul>
+    <ul className="todo-ul">
       {todoListData.map(({ id, title }) => (
         <TodoItem key={id} id={id} title={title} />
       ))}

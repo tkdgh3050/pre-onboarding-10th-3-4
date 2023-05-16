@@ -27,10 +27,13 @@ export interface RecommendData {
 }
 
 export interface RecommendStateValue {
-  recommendListData: RecommendData[];
+  recommendResponse: RecommendData;
+  recommendListData: string[];
 }
 
 export interface RecommendHandlerValue {
   getRecommendData: GetRecommendData;
+  clearRecommendData: ClearRecommendData;
 }
 export type GetRecommendData = (searchParam: SearchProps) => Promise<void>;
+export type ClearRecommendData = () => void;
