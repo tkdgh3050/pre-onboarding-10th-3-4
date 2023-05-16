@@ -46,18 +46,17 @@
   background: #d5f4f1;
 }
 
-.empty-dropdown {
-  width: 100%;
+.dropdown-endline {
   display: flex;
   justify-content: center;
-  font-size: 1.2rem;
-  margin-left: 0.75rem;
-  color: #9f9f9f;
+  height: 28px;
 }
 
-.dropdown-spinner {
+.more-icon {
   display: flex;
-  justify-content: center;
+  justify-self: center;
+  align-self: center;
+  height: 5px;
 }
 
 .item-highlight {
