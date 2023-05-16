@@ -4,6 +4,7 @@ import { ERROR_ALERT_MESSAGE } from '@utils/constants';
 import useLoading from '@hooks/useLoading';
 import { useTodoHandler } from '@context/TodoContext';
 import { TodoCreateData } from '@type/data';
+import styles from './TodoList.module.css';
 
 function TodoItem({ id, title }: TodoCreateData) {
   const { isLoading, startLoading, endLoading, Spinner } = useLoading();
@@ -22,12 +23,12 @@ function TodoItem({ id, title }: TodoCreateData) {
   }, [id]);
 
   return (
-    <li className="item">
+    <li className={styles.item}>
       <span>{title}</span>
-      <div className="item-option">
+      <div className={styles['item-option']}>
         {!isLoading ? (
           <button type="button" onClick={handleRemoveTodo}>
-            <FaTrash className="btn-trash" />
+            <FaTrash className={styles['btn-trash']} />
           </button>
         ) : (
           Spinner

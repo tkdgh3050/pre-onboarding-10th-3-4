@@ -7,6 +7,7 @@ import { useTodoHandler } from '@context/TodoContext';
 import useDebounce from '@hooks/useDebounce';
 import { useRecommendHandler } from '@context/RecommendContext';
 import DropdownList from '@components/DropdownList';
+import styles from './InputTodo.module.css';
 
 function InputTodo() {
   const [inputText, setInputText] = useState('');
@@ -70,10 +71,10 @@ function InputTodo() {
 
   return (
     <>
-      <form className="form-container" onSubmit={handleSubmit}>
-        <FaSearch className="icon-search" />
+      <form className={styles['form-container']} onSubmit={handleSubmit}>
+        <FaSearch className={styles['icon-search']} />
         <input
-          className="input-text"
+          className={styles['input-text']}
           placeholder="Add new todo..."
           ref={ref}
           value={inputText}
@@ -81,7 +82,7 @@ function InputTodo() {
           disabled={isLoading}
         />
         {!isLoading ? (
-          <button className="input-submit" type="submit">
+          <button className={styles['input-submit']} type="submit">
             {/* <FaPlusCircle className="btn-plus" /> */}
           </button>
         ) : (

@@ -5,6 +5,7 @@ import { ERROR_ALERT_MESSAGE, SEARCH_LIMIT_SIZE, THROTTLE_LIMIT_TIME } from '@ut
 import useLoading from '@hooks/useLoading';
 
 import DropdownItem from './DropdownItem';
+import styles from './DropdownList.module.css';
 
 const ALLOW_SCROLL_END = 10;
 
@@ -48,17 +49,17 @@ function DropdownList({ clickDropdownList }: { clickDropdownList: (text: string)
   const throttleScroll = useThrottle<[React.UIEvent<HTMLDivElement>]>(onScrollDropdown, THROTTLE_LIMIT_TIME);
 
   return recommendListData.length ? (
-    <div className="dropdown-container" onScroll={throttleScroll}>
-      <ul className="dropdown-ul" onClick={onClickDropdownList} role="presentation">
+    <div className={styles['dropdown-container']} onScroll={throttleScroll}>
+      <ul className={styles['dropdown-ul']} onClick={onClickDropdownList} role="presentation">
         {recommendListData.map((title, idx) => (
           // eslint-disable-next-line react/no-array-index-key
           <DropdownItem key={idx + title} title={title} query={q} />
         ))}
         {recommendListData.length < total ? (
           isLoading ? (
-            <div className="dropdown-spinner">{Spinner}</div>
+            <div className={styles['dropdown-spinner']}>{Spinner}</div>
           ) : (
-            <div className="empty-dropdown">...</div>
+            <div className={styles['empty-dropdown']}>...</div>
           )
         ) : null}
       </ul>
