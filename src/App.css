@@ -136,11 +136,12 @@ body {
   list-style-type: none;
   padding: 17px 1.5rem;
   border-bottom: 1px solid #eaeaea;
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 1.5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2px;
 }
 .item:hover {
   opacity: 0.85;
