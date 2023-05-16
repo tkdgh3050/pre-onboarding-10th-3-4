@@ -138,6 +138,9 @@ body {
   border-bottom: 1px solid #eaeaea;
   font-size: 1.2rem;
   letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .item:hover {
   opacity: 0.85;
@@ -205,16 +208,15 @@ body {
   height: 28px;
   background: #ffffff;
   border-radius: 3px;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.02em;
   user-select: none;
-  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* white-space: pre; */
 }
 
 .dropdown-item:hover {
