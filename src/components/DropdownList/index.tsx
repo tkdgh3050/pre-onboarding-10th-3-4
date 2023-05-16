@@ -3,7 +3,6 @@ import { useRecommendHandler, useRecommendState } from '@context/RecommendContex
 import useThrottle from '@hooks/useThrottle';
 import { ERROR_ALERT_MESSAGE, SEARCH_LIMIT_SIZE, THROTTLE_LIMIT_TIME } from '@utils/constants';
 import useLoading from '@hooks/useLoading';
-
 import DropdownItem from './DropdownItem';
 import styles from './DropdownList.module.css';
 
@@ -57,9 +56,11 @@ function DropdownList({ clickDropdownList }: { clickDropdownList: (text: string)
         ))}
         {recommendListData.length < total ? (
           isLoading ? (
-            <div className={styles['dropdown-spinner']}>{Spinner}</div>
+            <div className={styles['dropdown-endline']}>{Spinner}</div>
           ) : (
-            <div className={styles['empty-dropdown']}>...</div>
+            <div className={styles['dropdown-endline']}>
+              <img className={styles['more-icon']} src="/images/more.svg" alt="more-icon" />
+            </div>
           )
         ) : null}
       </ul>

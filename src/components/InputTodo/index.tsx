@@ -1,4 +1,3 @@
-import { FaSearch } from 'react-icons/fa';
 import React, { useCallback, useState, useEffect } from 'react';
 import useFocus from '@hooks/useFocus';
 import { DEBOUNCE_LIMIT_TIME, ERROR_ALERT_MESSAGE, SEARCH_LIMIT_SIZE } from '@utils/constants';
@@ -72,7 +71,7 @@ function InputTodo() {
   return (
     <>
       <form className={styles['form-container']} onSubmit={handleSubmit}>
-        <FaSearch className={styles['icon-search']} />
+        <img src="/images/search.svg" alt="search-icon" />
         <input
           className={styles['input-text']}
           placeholder="Add new todo..."
@@ -81,13 +80,7 @@ function InputTodo() {
           onChange={onChangeInput}
           disabled={isLoading}
         />
-        {!isLoading ? (
-          <button className={styles['input-submit']} type="submit">
-            {/* <FaPlusCircle className="btn-plus" /> */}
-          </button>
-        ) : (
-          Spinner
-        )}
+        {!isLoading ? <span className={styles['input-submit']} /> : Spinner}
       </form>
       <DropdownList clickDropdownList={clickDropdownList} />
     </>
