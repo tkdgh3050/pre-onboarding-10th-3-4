@@ -5,4 +5,3 @@ README.md
 .DS_Store
 .eslintcache
 npm-debug.log*
-env.d.ts
