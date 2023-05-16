@@ -1,0 +1,50 @@
+.todo-ul {
+  position: relative;
+  z-index: 0;
+}
+
+.empty-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 2.5rem;
+  letter-spacing: 1.5rem;
+  margin-left: 0.75rem;
+  color: #ececec;
+}
+
+.item {
+  list-style-type: none;
+  padding: 17px 1.5rem;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.item:hover {
+  opacity: 0.85;
+  background-color: #eaeaea;
+}
+
+.item-option {
+  float: right;
+}
+
+.item-option button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-trash {
+  color: orangered;
+  font-size: 16px;
+}
+
+.btn-trash:hover {
+  opacity: 0.5;
+}

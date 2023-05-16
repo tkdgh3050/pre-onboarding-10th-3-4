@@ -2,15 +2,14 @@ import React from 'react';
 import Header from '@components/Header';
 import InputTodo from '@components/InputTodo';
 import TodoList from '@components/TodoList';
-// import DropdownList from '@components/DropdownList';
+import styles from './Main.module.css';
 
 function Main() {
   return (
-    <div className="container">
-      <div className="inner">
+    <div className={styles.container}>
+      <div className={styles.inner}>
         <Header />
         <InputTodo />
-        {/* <DropdownList /> */}
         <TodoList />
       </div>
     </div>
