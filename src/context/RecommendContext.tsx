@@ -13,6 +13,7 @@ const defaultRecommendContextHandler: RecommendHandlerValue = {
     new Promise(resolve => {
       resolve();
     }),
+  clearRecommendData: () => null,
 };
 
 const RecommendContextState = createContext<RecommendStateValue>(defaultRecommendContextState);
@@ -24,11 +25,16 @@ export function RecommendProvider({ children, recommendService }: RecommendProvi
   const [recommendResponse, setRecommendResponse] = useState<RecommendData>(defaultResponse);
   const [recommendListData, setRecommendListData] = useState<string[]>([]);
 
+  const clearRecommendData = () => {
+    setRecommendListData([]);
+    setRecommendResponse(defaultResponse);
+  };
+
   const getRecommendData = async (searchParam: SearchProps) => {
-    console.log('getRecommendData param: ', searchParam);
-    if (searchParam.q === '') return;
+    // console.log('getRecommendData param: ', searchParam);
+    if (searchParam.q === '') return clearRecommendData();
     const { data } = await recommendService.getSearch(searchParam);
-    console.log('getRecommendData data: ', data);
+    // console.log('getRecommendData data: ', data);
     setRecommendResponse(data);
     setRecommendListData(data.result);
   };
@@ -44,8 +50,9 @@ export function RecommendProvider({ children, recommendService }: RecommendProvi
   const handlerValue = useMemo(
     () => ({
       getRecommendData,
+      clearRecommendData,
     }),
-    [getRecommendData]
+    [getRecommendData, clearRecommendData]
   );
 
   return (

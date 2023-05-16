@@ -64,7 +64,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.02em;
-  color: #9f9f9f;
+  color: #000000;
   flex: none;
   order: 0;
   flex-grow: 1;
@@ -214,6 +214,7 @@ body {
   line-height: 20px;
   letter-spacing: 0.02em;
   user-select: none;
+  white-space: pre;
 }
 
 .dropdown-item:hover {
